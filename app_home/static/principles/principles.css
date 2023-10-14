@@ -13,7 +13,7 @@ body{
 }
 
 .container_section{
-    height: 640px;
+    height: 1000px;
     display: flex;
     justify-content: center;
 
@@ -70,7 +70,7 @@ body{
     margin-top: 10px;
     background-color: #111;
     width: 800px;
-    height: 600px;
+    height: 700px;
     border: rgb(108, 223, 194) 3px solid;
     border-radius: 10px;
     display: flex;
