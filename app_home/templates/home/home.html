@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+
+</head>
+
+<body>
+    <header class="container_header">
+
+    </header>
+    <section class="container_section">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/app1/home/">Dashboard</a></li>
+                <li><a href="/app2/revenue/">Revenue</a></li>
+                <li><a href="/app3/expenditure/">Expenditure</a></li>
+            </ul>
+        </div>
+        <div class="container_dashboard">
+            <div class="container-control">
+                {% if my_balance_live <= 1000 %}
+                    <div class="container-thumb-danger"> 
+                        <div class="thumb-detail">
+                            <h1 class="h1-thumb">Balance Live</h1>
+                            <p class="p-thumb">R$ {{my_balance_live}} </p>
+                        </div>
+                        <div class="thumb-detail">
+                            <h1 class="h1-thumb">Balance General</h1>
+                            <p class="p-thumb">R$ {{my_balance_general}} </p>
+                        </div>
+                    </div>
+
+                {% elif my_balance_live > 1000 and my_balance_live < 2000 %}
+                    <div class="container-thumb-alert"> 
+                        <h1 class="h1-thumb">Balance Live</h1>
+                        <p class="p-thumb">R$ {{my_balance_live}} </p>
+                        <h1 class="h1-thumb">Balance General</h1>
+                        <p class="p-thumb">R$ {{my_balance_general}} </p>
+                    </div>
+
+                {% else %}
+
+                    <div class="container-thumb-perfect"> 
+                        <h1 class="h1-thumb">Balance Live</h1>
+                        <p class="p-thumb">R$ {{my_balance_live}} </p>
+                        <h1 class="h1-thumb">Balance General</h1>
+                        <p class="p-thumb">R$ {{my_balance_general}} </p>
+                    </div>
+
+                {% endif %}
+
+                <div class="container-re">
+                    <div>
+                        <h1> + Revenue</h1>
+                        <p>R$ {{total_revenue}}</p>
+                    </div>
+                    <div class="expenditure">
+                        <h1> - Expenditure</h1>
+                        <p>R$ {{total_cost}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+    </section>
+    
+</body>
+
+</html>
+

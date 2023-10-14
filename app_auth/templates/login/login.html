@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'login/login.css' %}">
+</head>
+<body>
+    <div class="container">
+      <div class="box_login">
+        <div class="login">
+          <h1>Login</h1>
+        </div>
+        <div class="description_login">
+          <p>Please enter your login and password</p>
+        </div>
+          <form action="{% url 'login_auth' %}" method="post" class="form_control">
+              {% csrf_token %}
+              <input type="text" name="username" placeholder="Username" class="input_details" required>
+              <input type="password" name="password" placeholder="Password" class="input_details" required>
+              <a href="" class="anchor_text"><p>forgot password?</p></a>
+              <button class="button_details" type="submit">Login</button>
+          </form>
+          <div class="sing_up">
+            <p>Don't have an account? <a href="" class="anchor_text">Sing Up</a></p>
+      </div>
+      </div>
+    </div>
+</body>
+</html>
+

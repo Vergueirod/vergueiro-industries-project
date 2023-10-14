@@ -1,0 +1,136 @@
+*{
+    font-family: sans-serif;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container_header{
+    background-color:#111;
+    height: 70px;
+}
+
+.container_section{
+    height: 640px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.sidebar{
+    background-color: yellowgreen;
+    flex: 1;
+    background-color: #111;
+}
+
+.container_dashboard{
+    flex: 5;
+    display: flex;
+    background-color: #121212f5;
+    justify-content: center;
+}
+
+.container-thumb{
+    background-color: #111;
+    height: 100px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 2px solid;
+    border-color:rgb(0, 188, 66) ;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.h1-thumb, .p-thumb{
+    margin: 0px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+
+}
+
+.container-forms{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-div-title{
+    margin-right: 50px;
+}
+
+.container-div-month{
+    margin-left: 50px;
+}
+
+.forms-rows{
+    display: flex;
+    flex-direction: row;
+}
+
+.container-btn{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+h3{
+    color: #fff;
+    font-size: 15px;
+}
+
+input{
+    height: 20px;
+    width: 200px;
+}
+
+select{
+    height: 25px;
+    width: 207px;
+
+}
+
+.btn{
+    height: 30px;
+    width: 200px;
+    background-color: rgb(0, 188, 66) ;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.btn:hover{
+    height: 30px;
+    width: 200px;
+    background-color: rgb(1, 134, 47) ;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
