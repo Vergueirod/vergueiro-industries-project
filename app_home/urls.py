@@ -5,4 +5,6 @@ app_name='app_home'
 
 urlpatterns = [
     path('home/', views.myBalance, name='home'),
+    path('principles/', views.myPrinciples, name='home'),
+
 ]
