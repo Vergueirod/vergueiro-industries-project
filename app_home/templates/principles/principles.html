@@ -25,46 +25,38 @@
         </div>
         <div class="container_dashboard">
             <div class="container-control">
-                {% if my_balance_live <= 1000 %}
-                    <div class="container-thumb-danger"> 
-                        <div class="thumb-detail">
-                            <h1 class="h1-thumb">Balance Live</h1>
-                            <p class="p-thumb">R$ {{my_balance_live}} </p>
-                        </div>
-                        <div class="thumb-detail">
-                            <h1 class="h1-thumb">Balance General</h1>
-                            <p class="p-thumb">R$ {{my_balance_general}} </p>
-                        </div>
-                    </div>
+                <div class="container-content"> 
+                    <h1>Life Principles</h1>
+                    <ol type="I" start="1">
+                        <li>Everything is in your mind, work on it daily;</li>
+                        <br>
+                        <li>focus on the 10-year law, your achievements depend on time;</li>
+                        <br>
+                        <li>What is worth it takes time to achieve, don't exchange it for short-term pleasures;</li>
+                        <br>
+                        <li>cash is king, save money and spend wisely;</li>
+                        <br>
+                        <li>One wrong expense will influence at least 6 months of your life;</li>
+                        <br>
+                        <li>Don't spend more than you earn;</li>
+                        <br>
+                        <li>Have a balanced life;</li>
+                        <br>
+                        <li>Focus on building a great foundation;</li>
+                        <br>
+                        <li>body, mind and spirit is the golden triad;</li>
+                        <br>
+                        <li>People are the most important asset;</li>
+                        <br>
+                        <li>Nutrition and training are essential for above-average performance</li>
+                        <br>
+                        <li>focus on what you can control</li>
+                        <br>
+                        <li>create your own system</li>
+                        <br>
+                        <li>Don't be nice, but be consistent</li>
+                      </ol>
 
-                {% elif my_balance_live > 1000 and my_balance_live < 2000 %}
-                    <div class="container-thumb-alert"> 
-                        <h1 class="h1-thumb">Balance Live</h1>
-                        <p class="p-thumb">R$ {{my_balance_live}} </p>
-                        <h1 class="h1-thumb">Balance General</h1>
-                        <p class="p-thumb">R$ {{my_balance_general}} </p>
-                    </div>
-
-                {% else %}
-
-                    <div class="container-thumb-perfect"> 
-                        <h1 class="h1-thumb">Balance Live</h1>
-                        <p class="p-thumb">R$ {{my_balance_live}} </p>
-                        <h1 class="h1-thumb">Balance General</h1>
-                        <p class="p-thumb">R$ {{my_balance_general}} </p>
-                    </div>
-
-                {% endif %}
-
-                <div class="container-re">
-                    <div>
-                        <h1> + Revenue</h1>
-                        <p>R$ {{total_revenue}}</p>
-                    </div>
-                    <div class="expenditure">
-                        <h1> - Expenditure</h1>
-                        <p>R$ {{total_cost}}</p>
-                    </div>
                 </div>
             </div>
 
