@@ -67,10 +67,10 @@ body{
 /*  Daqui para cima, são configurações globais */
 
 .container-content{
-    margin-top: 10px;
+    margin-top: 20px;
     background-color: #111;
     width: 800px;
-    height: 700px;
+    height: 800px;
     border: rgb(108, 223, 194) 3px solid;
     border-radius: 10px;
     display: flex;
