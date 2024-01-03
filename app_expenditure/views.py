@@ -2,16 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Expenditure
-'''
-1. Crio a funcão
-2. crio a condicional 
-    a) GET: Vou trazer o que quero que ele mostre sempre (Campos para preencher)
-    b) POST: Coletar os dados em uma variavel para enviar para o DB
-3. Cria uma nova instância
-4. Salvo no banco
-'''
-# Create your views here.
 
+# Expenditure data
 @login_required(login_url='/auth/login')
 def expenditureData(request):
     if request.method == 'GET':

@@ -4,8 +4,8 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 
+# login validation
 def login_auth(request):
    if request.method == 'GET':
       return render(request, 'login/login.html')
