@@ -24,6 +24,27 @@
             </ul>
         </div>
         <div class="container_dashboard">
+
+            <div class="filter_container">
+                <div class="data_container">
+                        <div class="container-div-month">
+                            <h3> Month:  </h3>
+                            <select name="month">
+                                {% for code, name in months_choices %}
+                                    <option value="{{ code }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="container-div-year">
+                            <h3> Year:  </h3>
+                            <input type="text" name="year" >
+                        </div>
+                </div>
+
+                <div class="btn_filter_container">
+                    <input type="submit" value="Filter" class="btn">
+                </div>
+            </div>
             <div class="container-control">
                 {% if my_balance_live <= 1000 %}
                     <div class="container-thumb-danger"> 

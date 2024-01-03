@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Revenue(models.Model):
     REVENUE_TYPES_CHOICES = [

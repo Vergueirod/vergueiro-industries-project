@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Expenditure(models.Model):
     CATEGORY_CHOICES = [

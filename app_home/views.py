@@ -22,8 +22,8 @@ def costTotal(request):
 def revenueTotal(request):
     revenue_total = Revenue.objects.values_list('value_revenue', flat=True)
     total_revenue = 0
+    
     for values in revenue_total :
-
         total_revenue += values
     return total_revenue
 
@@ -63,6 +63,21 @@ def myBalance(request):
     my_balance_live =  total_salary - total_cost
     my_balance_general = total_revenue - total_cost
 
+    MONTHS_CHOICES = [
+            (1, 'January'),
+            (2, 'February'),
+            (3, 'March'),
+            (4, 'April'),
+            (5, 'May'),
+            (6, 'June'),
+            (7, 'July'),
+            (8, 'August'),
+            (9, 'September'),
+            (10, 'October'),
+            (11, 'November'),
+            (12, 'December'),
+        ]
+
     context = {
         'total_revenue': total_revenue,
         'total_cost': total_cost,
@@ -70,6 +85,7 @@ def myBalance(request):
         'my_balance_live': my_balance_live,
         'total_salary': total_salary,
         'total_benefits': total_benefits,
+        'months_choices': MONTHS_CHOICES, 
     }
     
     return render(request, 'home/home.html', context)
