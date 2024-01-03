@@ -13,7 +13,7 @@ body{
 }
 
 .container_section{
-    height: 640px;
+    height: 1000px;
     display: flex;
     justify-content: center;
 
