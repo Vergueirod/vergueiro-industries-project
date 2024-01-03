@@ -24,44 +24,38 @@
             </ul>
         </div>
         <div class="container_dashboard">
-
-            <div class="filter_container">
-                <div class="data_container">
-                        <div class="container-div-month">
-                            <h3> Month:  </h3>
-                            <select name="month">
-                                {% for code, name in months_choices %}
-                                    <option value="{{ code }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
+            <form action="{% url 'app_home:dashboard' %}" method="get">
+                <div class="filter_container">
+                        <div class="data_container">
+                                <div class="container-div-month">
+                                    <h3> Month:  </h3>
+                                    <select name="month">
+                                        {% for code, name in months_choices %}
+                                            <option value="{{ code }}">{{ name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="container-div-year">
+                                    <h3> Year:  </h3>
+                                    <input type="text" name="year" >
+                                </div>
                         </div>
-                        <div class="container-div-year">
-                            <h3> Year:  </h3>
-                            <input type="text" name="year" >
-                        </div>
+                    <div class="btn_filter_container">
+                        <input type="submit" value="Filter" class="btn">
+                    </div>
                 </div>
-
-                <div class="btn_filter_container">
-                    <input type="submit" value="Filter" class="btn">
-                </div>
-            </div>
+            </form>
             <div class="container-control">
-                {% if my_balance_live <= 1000 %}
+                {% if my_balance_general <= 1000 %}
                     <div class="container-thumb-danger"> 
-                        <div class="thumb-detail">
-                            <h1 class="h1-thumb">Balance Live</h1>
-                            <p class="p-thumb">R$ {{my_balance_live}} </p>
-                        </div>
                         <div class="thumb-detail">
                             <h1 class="h1-thumb">Balance General</h1>
                             <p class="p-thumb">R$ {{my_balance_general}} </p>
                         </div>
                     </div>
 
-                {% elif my_balance_live > 1000 and my_balance_live < 2000 %}
+                {% elif my_balance_general > 1000 and my_balance_general < 2000 %}
                     <div class="container-thumb-alert"> 
-                        <h1 class="h1-thumb">Balance Live</h1>
-                        <p class="p-thumb">R$ {{my_balance_live}} </p>
                         <h1 class="h1-thumb">Balance General</h1>
                         <p class="p-thumb">R$ {{my_balance_general}} </p>
                     </div>
@@ -69,8 +63,6 @@
                 {% else %}
 
                     <div class="container-thumb-perfect"> 
-                        <h1 class="h1-thumb">Balance Live</h1>
-                        <p class="p-thumb">R$ {{my_balance_live}} </p>
                         <h1 class="h1-thumb">Balance General</h1>
                         <p class="p-thumb">R$ {{my_balance_general}} </p>
                     </div>

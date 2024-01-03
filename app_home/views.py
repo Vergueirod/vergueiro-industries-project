@@ -7,49 +7,27 @@ from app_revenue.models import Revenue
 
 # Get my cost total 
 @login_required(login_url='/auth/login')
-def costTotal(request):
+def costTotal(request, month=None, year=None):
 
-    cost_total = Expenditure.objects.values_list('value', flat=True)
-    total_cost = 0
+    queryset = Expenditure.objects.all()
 
-    for values in cost_total :
-        total_cost += values
+    if month and year:
+        queryset = queryset.filter(month=month, year=year)
+    
+    total_cost = sum(values.value for values in queryset)
     return total_cost
-
 
 # Get my revenue total
 @login_required(login_url='/auth/login')
-def revenueTotal(request):
-    revenue_total = Revenue.objects.values_list('value_revenue', flat=True)
-    total_revenue = 0
+def revenueTotal(request, month=None, year=None ):
+
+    queryset = Revenue.objects.all()
+
+    if month and year:
+        queryset = queryset.filter(month=month, year=year)
     
-    for values in revenue_total :
-        total_revenue += values
+    total_revenue = sum(values.value_revenue for values in queryset)
     return total_revenue
-
-
-# Salary total
-@login_required(login_url='/auth/login')
-def salaryTotal(request):
-    salary_total = Revenue.objects.filter(revenue_types__iexact='SAL').values_list('value_revenue', flat=True)
-
-    total_salary = 0
-    for values in salary_total:
-        total_salary += values
-    return total_salary
-
-
-# Benefits total
-@login_required(login_url='/auth/login')
-def benefitsTotal(request):
-
-    benefits_total = Revenue.objects.filter(revenue_types='BEN').values_list('value_revenue', flat=True)
-    total_benefits = 0 
-
-    for values in benefits_total:
-        total_benefits += values
-    return total_benefits
-
 
 # Balance view
 @login_required(login_url='/auth/login')
@@ -57,11 +35,18 @@ def myBalance(request):
 
     total_revenue = revenueTotal(request)
     total_cost = costTotal(request)
-    total_salary = salaryTotal(request)
-    total_benefits = benefitsTotal(request)
 
-    my_balance_live =  total_salary - total_cost
     my_balance_general = total_revenue - total_cost
+
+    month = request.GET.get('month')
+    year = request.GET.get('year')
+
+    if month and year:
+        total_revenue = revenueTotal(request, month, year)
+        total_cost = costTotal(request, month, year)
+        my_balance_general = total_revenue - total_cost
+
+        print(f"{my_balance_general}")
 
     MONTHS_CHOICES = [
             (1, 'January'),
@@ -82,9 +67,6 @@ def myBalance(request):
         'total_revenue': total_revenue,
         'total_cost': total_cost,
         'my_balance_general': my_balance_general,
-        'my_balance_live': my_balance_live,
-        'total_salary': total_salary,
-        'total_benefits': total_benefits,
         'months_choices': MONTHS_CHOICES, 
     }
     
