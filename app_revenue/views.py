@@ -2,12 +2,30 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Revenue
+from django.http import JsonResponse
+
+
+   # Read data in table:
+@login_required(login_url='/auth/login')
+def readRevenue(request):
+    if request.method == 'GET':
+        read_test = Revenue.objects.all()
+    return JsonResponse({'revenues': list(read_test.values())})
 
 
 # Revenue register
 @login_required(login_url='/auth/login')
-def registerRevenue(request):
+def revenueCrud(request):
     if request.method == 'GET':
+        revenues = Revenue.objects.all()
+        
+        context = {
+            'revenues' : revenues,
+        }
+        return render(request, 'revenue/revenue.html', context)
+
+    '''
+    if request.method == 'GET': # READ
         context = {
             'revenues' : Revenue.REVENUE_TYPES_CHOICES,
             'months' : Revenue.MONTHS_CHOICES,
@@ -16,7 +34,7 @@ def registerRevenue(request):
         }
         return render(request, 'revenue/revenue.html', context)
     
-    elif request.method == 'POST':
+    elif request.method == 'POST': # CREATE
         
         revenue_choice = request.POST.get('revenue')
         value = request.POST.get('value')
@@ -32,3 +50,4 @@ def registerRevenue(request):
 
         revenue.save()
         return HttpResponse('Dados salvos com sucesso!')
+'''

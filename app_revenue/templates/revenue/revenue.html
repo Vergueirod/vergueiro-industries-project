@@ -24,52 +24,32 @@
             </ul>
         </div>
         <div class="container_dashboard">
-            <div class="forms-control">
-                
-                <form action="{% url 'app_revenue:revenue' %}" method="post" class="container-forms">{% csrf_token %}
-                    <div class="container-thumb"> 
-                        <h1 class="h1-thumb">Revenue</h1>
-                        <p class="p-thumb">Give me 10 years.</p>
-                    </div>
-                    <div class="forms-rows">   
-                        <div class="container-div-title">
-                           
-                            <h3> Revenue </h3>
-                            <select name="revenue">
-                                {% for code, name in revenues %}
-                                    <option value="{{ code }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                            <br>
-
-                            <h3> Value </h3>
-                            <input type="text" name="value" >
-                            <br>
-
-                        </div>
-                        
-                        <div class="container-div-month">
-                            <h3> Month </h3>
-                            <select name="month">
-                                {% for code, name in months %}
-                                    <option value="{{ code }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                            <br>
-
-                            <h3> Year </h3>
-                            <input type="text" name="year" >
-                            <br>
-                        </div>
-                    </div>
-                    <div class="container-btn">
-                        <input type="submit" value="Send" class="btn">
-                    </div>
-                </form> 
-            </div>
-        </div> 
+                <div class="container-thumb"> 
+                    <h1 class="h1-thumb">Expenditure</h1>
+                    <p class="p-thumb">Don't spend more than you earn.</p>
+                </div>
+                <div class="container-table">
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Month</th>
+                            <th>Year</th>
+                            <th>Value</th>
+                        </tr>
+                        {% for revenue  in revenues %}
+                        <tr>
+                            <td>{{ revenue.id }}</td>
+                            <td>{{ revenue.revenue_types }}</td>
+                            <td>{{ revenue.month }}</td>
+                            <td>{{ revenue.year }}</td>
+                            <td>R$ {{ revenue.value_revenue }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div> 
     </section>
-   
 </body>
 
 </html>
