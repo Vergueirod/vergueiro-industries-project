@@ -18,7 +18,7 @@ def login_auth(request):
 
    if user:
       django_login(request, user)
-      return redirect('app_home:home')
+      return redirect('app_home:dashboard')
    
    return render(request, 'login/login.html')
 
