@@ -46,13 +46,3 @@ def expenditureData(request):
        expenditure.save()
 
        return HttpResponse('Dados salvos com sucesso!')
-
-
-   
-   
-   
-   
-   
-   
-   
-   
