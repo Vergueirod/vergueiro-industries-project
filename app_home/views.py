@@ -17,6 +17,7 @@ def costTotal(request, month=None, year=None):
     total_cost = sum(values.value for values in queryset)
     return total_cost
 
+
 # Get my revenue total
 @login_required(login_url='/auth/login')
 def revenueTotal(request, month=None, year=None ):
@@ -28,6 +29,7 @@ def revenueTotal(request, month=None, year=None ):
     
     total_revenue = sum(values.value_revenue for values in queryset)
     return total_revenue
+
 
 # Balance view
 @login_required(login_url='/auth/login')
@@ -45,8 +47,6 @@ def myBalance(request):
         total_revenue = revenueTotal(request, month, year)
         total_cost = costTotal(request, month, year)
         my_balance_general = total_revenue - total_cost
-
-        print(f"{my_balance_general}")
 
     MONTHS_CHOICES = [
             (1, 'January'),
@@ -71,6 +71,7 @@ def myBalance(request):
     }
     
     return render(request, 'home/home.html', context)
+
 
 # Principles for life
 @login_required(login_url='/auth/login')
