@@ -1,26 +1,32 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .models import Expenditure
+
+
+# Expenditure JSON
+@login_required(login_url='/auth/login')
+def expenditureJson(request):
+    expenditure_json = Expenditure.objects.all()
+    return JsonResponse({'expenditures': list(expenditure_json.values())})
+
 
 # Expenditure data
 @login_required(login_url='/auth/login')
 def expenditureData(request):
     if request.method == 'GET':
-        context = {
+        
+        expenditure_data = Expenditure.objects.all()
 
+        context = {
+            'expenditures': expenditure_data,
             'categories': Expenditure.CATEGORY_CHOICES,
             'payments': Expenditure.PAYMENT_METHOD_CHOICES,
-            'creditcards': Expenditure.credit_card,
             'months': Expenditure.MONTHS_CHOICES,
-            'years': Expenditure.year,
-            'titles': Expenditure.title,
-            'values': Expenditure.value,
-
         }
         return render(request, 'expenditure/expenditure.html', context)
     
-    else:
+    elif request.method == 'POST':
        category_choice = request.POST.get('category')
        payment_choice = request.POST.get('payment')
        credit = request.POST.get('credit')

@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import Revenue
-from django.http import JsonResponse
 
 
 # Read data in table:

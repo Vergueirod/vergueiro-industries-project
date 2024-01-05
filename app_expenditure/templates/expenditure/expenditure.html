@@ -84,6 +84,30 @@
                     </div>
                 </form> 
             </div>
+            <div class="container-table">
+                <table class="table-container">
+                    <tr class="colunms">
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Value</th>
+                        <th>Payment</th>
+                        <th>Credit Card</th>
+                        <th>Month</th>
+                        <th>Year</th>
+                    </tr>
+                    {% for expenditure  in expenditures %}
+                    <tr class="lines">
+                        <td>{{ expenditure.title }}</td>
+                        <td>{{ expenditure.category }}</td>
+                        <td>{{ expenditure.value }}</td>
+                        <td>{{ expenditure.payment_method }}</td>
+                        <td>{{ expenditure.credit_card }}</td>
+                        <td>{{ expenditure.month }}</td>
+                        <td>{{ expenditure.year }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div> 
     </section>
     
