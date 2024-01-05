@@ -47,7 +47,6 @@ def revenueCrud(request, id=None):
         pass
     
     elif request.method == 'DELETE':
-        print('teste')
         try:
             item = Revenue.objects.get(id=id)
             item.delete()
