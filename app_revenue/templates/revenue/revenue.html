@@ -29,27 +29,27 @@
                     <p class="p-thumb">Don't spend more than you earn.</p>
                 </div>
                 <div class="container-table">
-                    <table>
-                        <tr>
-                            <th>ID</th>
+                    <table class="table-container">
+                        <tr class="colunms">
                             <th>Type</th>
                             <th>Month</th>
                             <th>Year</th>
                             <th>Value</th>
+                            <th>Delete</th>
                         </tr>
                         {% for revenue  in revenues %}
-                        <tr>
-                            <td>{{ revenue.id }}</td>
+                        <tr class="lines">
                             <td>{{ revenue.revenue_types }}</td>
                             <td>{{ revenue.month }}</td>
                             <td>{{ revenue.year }}</td>
                             <td>R$ {{ revenue.value_revenue }}</td>
+                            <td><button class="delete-btn" data-id="{{ revenue.id }}">Delete</button></td>
                         </tr>
                         {% endfor %}
                     </table>
                 </div>
             </div> 
     </section>
+    <script src="/static/revenue/revenue.js "></script>
 </body>
-
 </html>

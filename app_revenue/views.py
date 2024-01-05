@@ -5,7 +5,7 @@ from .models import Revenue
 from django.http import JsonResponse
 
 
-   # Read data in table:
+# Read data in table:
 @login_required(login_url='/auth/login')
 def readRevenue(request):
     if request.method == 'GET':
@@ -15,7 +15,7 @@ def readRevenue(request):
 
 # Revenue register
 @login_required(login_url='/auth/login')
-def revenueCrud(request):
+def revenueCrud(request, id=None):
     if request.method == 'GET':
         revenues = Revenue.objects.all()
         
@@ -23,7 +23,17 @@ def revenueCrud(request):
             'revenues' : revenues,
         }
         return render(request, 'revenue/revenue.html', context)
+    elif request.method == 'DELETE':
+        print('teste')
+        try:
+            item = Revenue.objects.get(id=id)
+            item.delete()
+            return JsonResponse({'status': 'success'})
 
+        except Revenue.DoesNotExist:
+            return JsonResponse({'status': 'error'}, status=404)
+        
+    
     '''
     if request.method == 'GET': # READ
         context = {

@@ -27,10 +27,8 @@ body{
 .container_dashboard{
     flex: 5;
     display: flex;
-    width: 100%;
     background-color: #121212f5;
     flex-direction: column;
-    align-items: center;
 }
 
 .container-thumb{
@@ -134,4 +132,41 @@ select{
     border: none;
     border-radius: 5px;
     color: #fff;
+}
+
+/* Estilo Geral da Tabela */
+table {
+    width: 100%; /* Ocupar a largura total */
+    border-collapse: collapse; /* Colapsar as bordas */
+    text-align: left; /* Alinhamento do texto */
+    font-family: Arial, sans-serif; /* Fonte da tabela */
+}
+
+/* Cabeçalho da Tabela */
+th {
+    background-color: #f2f2f2; /* Cor de fundo do cabeçalho */
+    color: #333; /* Cor do texto do cabeçalho */
+    padding: 8px; /* Espaçamento interno */
+    border-bottom: 1px solid #ddd; /* Borda inferior */
+}
+
+/* Linhas da Tabela */
+td {
+    padding: 8px; /* Espaçamento interno */
+    border-bottom: 1px solid #ddd; /* Borda inferior de cada célula */
+}
+
+/* Linhas Ímpares da Tabela */
+tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Cor de fundo para linhas ímpares */
+}
+
+/* Linhas Pares da Tabela (se desejar um estilo diferente) */
+tr:nth-child(even) {
+    background-color: #ffffff; /* Cor de fundo para linhas pares */
+}
+
+/* Estilo ao Passar o Mouse */
+tr:hover {
+    background-color: #eaeaea; /* Cor de fundo ao passar o mouse */
 }
