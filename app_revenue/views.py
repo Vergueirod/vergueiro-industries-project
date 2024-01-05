@@ -17,35 +17,17 @@ def readRevenue(request):
 @login_required(login_url='/auth/login')
 def revenueCrud(request, id=None):
     if request.method == 'GET':
+
         revenues = Revenue.objects.all()
         
         context = {
             'revenues' : revenues,
-        }
-        return render(request, 'revenue/revenue.html', context)
-    elif request.method == 'DELETE':
-        print('teste')
-        try:
-            item = Revenue.objects.get(id=id)
-            item.delete()
-            return JsonResponse({'status': 'success'})
-
-        except Revenue.DoesNotExist:
-            return JsonResponse({'status': 'error'}, status=404)
-        
-    
-    '''
-    if request.method == 'GET': # READ
-        context = {
-            'revenues' : Revenue.REVENUE_TYPES_CHOICES,
-            'months' : Revenue.MONTHS_CHOICES,
-            'years' : Revenue.year,
-            'values' : Revenue.value_revenue,
+            'revenue_show' : Revenue.REVENUE_TYPES_CHOICES,
+            'months_show' : Revenue.MONTHS_CHOICES,
         }
         return render(request, 'revenue/revenue.html', context)
     
-    elif request.method == 'POST': # CREATE
-        
+    elif request.method == 'POST':
         revenue_choice = request.POST.get('revenue')
         value = request.POST.get('value')
         month = request.POST.get('month')
@@ -60,4 +42,15 @@ def revenueCrud(request, id=None):
 
         revenue.save()
         return HttpResponse('Dados salvos com sucesso!')
-'''
+    
+    elif request.method == 'PUT':
+        pass
+    
+    elif request.method == 'DELETE':
+        print('teste')
+        try:
+            item = Revenue.objects.get(id=id)
+            item.delete()
+            return JsonResponse({'status': 'success'})
+        except Revenue.DoesNotExist:
+            return JsonResponse({'status': 'error'}, status=404)
